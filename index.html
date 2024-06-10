@@ -142,6 +142,20 @@
 
             var expandEl = document.querySelector('#viewport-params-expand');
             expandEl.innerText = 'Is Expanded: ' + (Telegram.WebApp.isExpanded ? 'true' : 'false');
+
+            const initData = Telegram.WebApp.initData;
+            let userInfo = {};
+            if (initData) {
+                try {
+                    userInfo = JSON.parse(initData);
+                } catch (error) {
+                    console.error("Error parsing initData:", error);
+                }
+            }
+
+            // Update the #user-info div
+            const userInfoEl = document.getElementById('user-info');
+            userInfoEl.innerText = `User ID: ${userInfo.user?.id || 'N/A'}, Username: ${userInfo.user?.username || 'N/A'}, Name: ${userInfo.user?.first_name || ''} ${userInfo.user?.last_name || ''}`;
         }
 
         Telegram.WebApp.setHeaderColor('secondary_bg_color');
