@@ -42,7 +42,9 @@
         }
 
         #viewport-params-size,
-        #viewport-params-expand {
+        #viewport-params-expand,
+        #viewport-params-username
+         {
             content: attr(text);
             position: absolute;
             display: inline-block;
@@ -59,6 +61,10 @@
         #viewport-params-expand {
             top: 30px;
         }
+        #viewport-params-username {
+            top: 56px;
+        }
+
     </style>
 </head>
 
@@ -88,10 +94,10 @@
         <button onclick="Telegram.WebApp.expand();">Expand Webview</button>
         <button onclick="toggleMainButton();">Toggle Main Button</button>
     </main>
-    <div id="viewport"></div>
-    <div id="viewport-params-size"></div>
-    <div id="viewport-params-expand"></div>
-    <div id="user-info"></div> <div id="user-info"></div>
+        <div id="viewport"></div>
+        <div id="viewport-params-size"></div>
+        <div id="viewport-params-expand"></div>
+        <div id="viewport-params-username"></div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         // Init TWA
@@ -155,8 +161,8 @@
             }
 
             // Update the #user-info div
-            const userInfoEl = document.getElementById('user-info');
-            userInfoEl.innerText = `User ID: ${userInfo.user?.id || 'N/A'}, Username: ${userInfo.user?.username || 'N/A'}, Name: ${userInfo.user?.first_name || ''} ${userInfo.user?.last_name || ''}`;
+            var usernameEl = document.getElementById('viewport-params-username');
+            usernameEl.innerText = 'Username: ' + (Telegram.WebApp.WebAppUser.username);
         }
 
         Telegram.WebApp.setHeaderColor('secondary_bg_color');
