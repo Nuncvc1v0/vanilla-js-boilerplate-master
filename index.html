@@ -161,8 +161,8 @@
             }
 
             // Update the #user-info div
-            var usernameEl = document.getElementById('viewport-params-username');
-            usernameEl.innerText = 'Username: ' + (Telegram.WebApp.WebAppUser.username);
+            const username = Telegram.WebApp.initDataUnsafe?.user?.username || "Unknown";
+            document.getElementById('viewport-params-username').innerText = 'Username: ' + username;
         }
 
         Telegram.WebApp.setHeaderColor('secondary_bg_color');
