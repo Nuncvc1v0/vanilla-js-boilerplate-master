@@ -43,7 +43,9 @@
 
         #viewport-params-size,
         #viewport-params-expand,
-        #viewport-params-username
+        #viewport-params-username,
+        #viewport-params-name,
+        #viewport-params-id
          {
             content: attr(text);
             position: absolute;
@@ -63,6 +65,12 @@
         }
         #viewport-params-username {
             top: 56px;
+        }
+        #viewport-params-name{
+            top: 82px;
+        }
+        #viewport-params-id {
+            top: 108px;
         }
 
     </style>
@@ -98,6 +106,8 @@
         <div id="viewport-params-size"></div>
         <div id="viewport-params-expand"></div>
         <div id="viewport-params-username"></div>
+        <div id="viewport-params-name"></div>
+        <div id="viewport-params-id"></div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         // Init TWA
@@ -163,6 +173,14 @@
             // Update the #user-info div
             const username = Telegram.WebApp.initDataUnsafe?.user?.username || "Unknown";
             document.getElementById('viewport-params-username').innerText = 'Username: ' + username;
+
+
+            const name = Telegram.WebApp.initDataUnsafe?.user?.name || "Unknown";
+            document.getElementById('viewport-params-name').innerText = 'Name: ' + name;
+
+
+            const userId = Telegram.WebApp.initDataUnsafe?.user?.id || "Unknown";
+            document.getElementById('viewport-params-id').innerText = 'ID: ' + userId;
         }
 
         Telegram.WebApp.setHeaderColor('secondary_bg_color');
